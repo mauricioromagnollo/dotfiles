@@ -37,10 +37,9 @@ Test
 | Toggle Line Comment | <kbd>Ctrl</kbd> + <kbd>/</kbd> | 
 | Copy Line Down | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> | 
 | Cut | <kbd>Ctrl</kbd> + <kbd>X</kbd> | 
-| View: Toggle Integrated Terminal | <kbd>Ctrl</kbd> + <kbd>´</kbd> | 
-| Split Terminal | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | 
+| View: Toggle Terminal | <kbd>Ctrl</kbd> + <kbd>´</kbd> | 
+| Terminal: Split Terminal | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> | 
 | View: Toggle Slide Bar Visibility | <kbd>Ctrl</kbd> + <kbd>B</kbd> | 
 | View: Close All Editors | <kbd>Ctrl</kbd> + <kbd>K</kbd> <kbd>Ctrl</kbd> + <kbd>W</kbd> | 
 | Expand Selection | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>RightArrow</kbd> | 
-| Select All Occurrences of Find Match | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> | 
 | Reindent Lines | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | 

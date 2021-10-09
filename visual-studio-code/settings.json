@@ -24,7 +24,7 @@
   "explorer.compactFolders": false,
   
   /* Font Size and Family */
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.lineHeight": 21,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
