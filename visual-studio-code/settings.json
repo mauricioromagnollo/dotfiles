@@ -130,5 +130,5 @@
     "package-lock.json": "npm",
     "*.md": "Markdown"
   },
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.enabled": false
 }
