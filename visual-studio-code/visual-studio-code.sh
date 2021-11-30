@@ -19,7 +19,8 @@ function install-extensions() {
   "dbaeumer.vscode-eslint" "wix.vscode-import-cost" "ritwickdey.LiveServer" "DavidAnson.vscode-markdownlint" 
   "PKief.material-icon-theme" "rocketseat.theme-omni" "2gua.rainbow-brackets" 
   "ms-vscode.vscode-typescript-tslint-plugin" "jpoissonnier.vscode-styled-components" "eamodio.gitlens" 
-  "GraphQL.vscode-graphql" "abusaidm.html-snippets" )
+  "GraphQL.vscode-graphql" "abusaidm.html-snippets" "hediet.vscode-drawio" "adpyke.codesnap" "humao.rest-client" 
+  "formulahendry.auto-rename-tag" )
 
   for extension in "${extensions[@]}"
   do 
