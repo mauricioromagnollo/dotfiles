@@ -11,7 +11,10 @@
 
 
 # Remove All Containers
-docker rm $(docker ps -aq) -f
+docker rm -f $(docker ps -aq)
 
 # Remove All Images
-docker rmi $(docker images -q)
+docker rmi -f $(docker images -q)
+
+# Prune Volumes
+docker system prune --volumes -f
