@@ -18,3 +18,4 @@ docker rmi -f $(docker images -q)
 
 # Prune Volumes
 docker system prune --volumes -f
+docker volume rm $(docker volume ls -qf dangling=true)
