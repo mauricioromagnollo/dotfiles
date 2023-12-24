@@ -24,3 +24,7 @@ esac
 
 unset CONSOLE_ARG
 unset TOUCHPAD_ID
+
+# Wayland
+# gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled
+# gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled
