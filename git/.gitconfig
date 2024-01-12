@@ -1,0 +1,55 @@
+[user]
+	email = mauricioromagnollo@gmail.com
+	name = mauricioromagnollo
+
+[core]
+  editor = vim
+
+[color "status"]
+  added = green
+  changed = cyan 
+  untracked = yellow
+  deleted = red
+
+[color "branch"]
+  current = white 
+  remote = red 
+
+[color "diff"]
+  meta = yellow 
+  old = red 
+  new = green
+
+[alias]
+  aacm = !git add --all && git commit -m
+  aaca = !git add --all && git commit --amend --no-edit
+  squash = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
+  tgp = "!f(){ git tag \"$1\" -m \"$2\" && git push origin master --follow-tags;};f"
+  unst = !git reset HEAD --
+  roll = !git reset --soft HEAD~1 
+  s = !git status -s
+  l = !git log --pretty=format:'%C(blue)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+  c = !git commit
+  cm = !git commit -m
+  ca = !git commit --amend --no-edit
+  cae = !git commit --amend
+  a = !git add
+  aa = !git add --all
+  b = !git branch
+  bd = !git branch -D
+  bdr = !git push origin --delete
+  bp = !git push -u origin
+  rb = !git rebase
+  rbc = !git rebase --continue
+  rba = !git rebase --abord
+  rbi = !git rebase -i HEAD~$1
+  plr = !git pull --rebase origin
+  pl = !git pull
+  p = !git push
+  pf = !git push --force
+  pfl = !git push --force-with-lease
+  fa = !git fetch --all
+  tg = !git tag
+  co = !git checkout
+  com = !git checkout master
+  cob = !git checkout -b

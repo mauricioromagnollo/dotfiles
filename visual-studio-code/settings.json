@@ -1,0 +1,184 @@
+{
+  /* 
+   * EDITOR VISUAL AND OTHERS SETTINGS 
+   */
+  "update.mode": "start",
+  "update.showReleaseNotes": false,
+  "security.workspace.trust.enabled": false,
+  "window.commandCenter": true,
+  "window.titleBarStyle": "native",
+  "window.zoomLevel": 2,
+  "breadcrumbs.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Omni",
+  "workbench.editor.labelFormat": "short",
+  "workbench.statusBar.visible": false,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.fontSize": 12,
+  "editor.lineHeight": 18,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.parameterHints.enabled": false,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.renderLineHighlight": "gutter",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+  },
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
+  /* 
+   * TERMINAL SETTINGS 
+   */
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  "terminal.integrated.env.linux": {},
+  /* 
+   * EXTENSIONS SETTINGS 
+   */
+  "extensions.ignoreRecommendations": true,
+  "extensions.autoCheckUpdates": true,
+  /* 
+   * JAVASCRIPT AND TYPESCRIPT SETTINGS 
+   */
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.suggest.autoImports": true,
+  /* 
+   * GOLANG SETTINGS 
+   */
+  "go.toolsManagement.autoUpdate": true,
+  "go.lintTool": "golangci-lint",
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "go.lintFlags": [
+    "--fast"
+  ],
+  /* 
+   * PRISMA SETTINGS 
+   */
+  "[prisma]": {
+    "editor.formatOnSave": true,
+  },
+  /* 
+   * COPILOT SETTINGS 
+   */
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  /* 
+   * GITLENS SETTINGS 
+   */
+  "gitlens.codeLens.recentChange.enabled": true,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  /* 
+   * EMMET SETTINGS 
+   */
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "nunjucks": "html"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "nunjucks": "html"
+  },
+  /* 
+   * ESLINT SETTINGS 
+   */
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  /* 
+   * FILES AND MATERIAL ICON SETTINGS 
+   */
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    ".prettierrc": "json"
+  },
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "domain": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "modules": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock",
+    "websockets": "pipe",
+    "protos": "pipe",
+    "grpc": "pipe",
+    "providers": "include",
+    "subscribers": "messages",
+    "useCases": "controller",
+    "kafka": "scripts",
+    "mappers": "meta",
+    "_shared": "shared",
+    "eslint-config": "tools",
+    ".jest": "coverage",
+    "main": "Public",
+    "unit": "Guard",
+    "nodejs": "node",
+  },
+  "material-icon-theme.files.associations": {
+    "ormconfig.json": "database",
+    "tsconfig.json": "tune",
+    "tsconfig.build.json": "tune",
+    "*.proto": "3d",
+    "package.json": "npm",
+    "package-lock.json": "npm",
+    "*.md": "Markdown",
+    "jest.config.unit.js": "jest",
+    "jest.config.unit.ts": "jest",
+    "jest.config.watch.js": "jest",
+    "jest.config.watch.ts": "jest",
+    "jest.config.integration.js": "jest",
+    "jest.config.integration.ts": "jest",
+    "jest.config.e2e.js": "jest",
+    "jest.config.e2e.ts": "jest",
+    "jest.config.root.js": "jest",
+    "jest.config.root.ts": "jest",
+    "jest.config.coverage.js": "jest",
+    "jest.config.coverage.ts": "jest",
+    "README.md": "Markdown",
+  },
+  /* 
+   * CONSOLE NINJA SETTINGS 
+   */
+  "console-ninja.featureSet": "Community",
+}
