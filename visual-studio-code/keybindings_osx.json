@@ -1,0 +1,34 @@
+[
+  {
+    "key": "cmd+shift+d",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+'",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "cmd+shift+t",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+opt+r",
+    "command": "editor.action.reindentlines"
+  },
+  {
+    "key": "cmd+shift+w",
+    "command": "workbench.action.closeAllGroups"
+  },
+  {
+    "key": "cmd+shift+opt+c",
+    "command": "workbench.action.openQuickChat.copilot"
+  }
+]
