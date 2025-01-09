@@ -1,44 +1,48 @@
 [
   {
-    "key": "ctrl+shift+d",
+    "key": "alt+shift+d",
     "command": "editor.action.copyLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+shift+alt+down",
+    "key": "alt+shift+alt+down",
     "command": "-editor.action.copyLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+[BracketLeft]",
+    "key": "alt+[BracketLeft]",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+shift+[BracketLeft]",
+    "key": "alt+shift+[BracketLeft]",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+shift+t",
+    "key": "alt+shift+t",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+shift+5",
+    "key": "alt+shift+5",
     "command": "-workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+alt+r",
+    "key": "alt+alt+r",
     "command": "editor.action.reindentlines"
   },
   {
-    "key": "ctrl+shift+w",
+    "key": "alt+shift+w",
     "command": "workbench.action.closeAllGroups"
   },
   {
-    "key": "ctrl+shift+alt+c",
+    "key": "alt+shift+alt+c",
     "command": "workbench.action.openQuickChat.copilot"
-  }
+  },
+  {
+    "key": "alt+shift+p",
+    "command": "workbench.action.showCommands"
+  },
 ]
