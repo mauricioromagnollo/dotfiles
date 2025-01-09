@@ -1,7 +1,7 @@
 {
   /* 
-   * EDITOR VISUAL AND OTHERS SETTINGS 
-   */
+     * EDITOR VISUAL AND OTHERS SETTINGS 
+     */
   "update.mode": "start",
   "update.showReleaseNotes": false,
   "security.workspace.trust.enabled": false,
@@ -11,7 +11,7 @@
   "breadcrumbs.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Omni",
-  "workbench.editor.labelFormat": "short",
+  "workbench.editor.labelFormat": "default",
   "workbench.statusBar.visible": false,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
@@ -28,11 +28,11 @@
   "editor.minimap.enabled": false,
   "editor.inlineSuggest.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
   "editor.rulers": [
-    80,
+    100,
     120
   ],
   "[jsonc]": {
@@ -47,28 +47,27 @@
   "explorer.confirmDelete": false,
   "explorer.compactFolders": false,
   /* 
-   * TERMINAL SETTINGS 
-   */
+     * TERMINAL SETTINGS 
+     */
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.shell.linux": "/bin/zsh",
-  "terminal.integrated.env.linux": {},
+  "terminal.integrated.env.osx": {},
   /* 
-   * EXTENSIONS SETTINGS 
-   */
+     * EXTENSIONS SETTINGS 
+     */
   "extensions.ignoreRecommendations": true,
   "extensions.autoCheckUpdates": true,
   /* 
-   * JAVASCRIPT AND TYPESCRIPT SETTINGS 
-   */
+     * JAVASCRIPT AND TYPESCRIPT SETTINGS 
+     */
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
   "typescript.suggest.autoImports": true,
   /* 
-   * GOLANG SETTINGS 
-   */
+     * GOLANG SETTINGS 
+     */
   "go.toolsManagement.autoUpdate": true,
   "go.lintTool": "golangci-lint",
   "gopls": {
@@ -78,14 +77,14 @@
     "--fast"
   ],
   /* 
-   * PRISMA SETTINGS 
-   */
+     * PRISMA SETTINGS 
+     */
   "[prisma]": {
     "editor.formatOnSave": true,
   },
   /* 
-   * COPILOT SETTINGS 
-   */
+     * COPILOT SETTINGS 
+     */
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
@@ -93,14 +92,14 @@
     "scminput": false
   },
   /* 
-   * GITLENS SETTINGS 
-   */
+     * GITLENS SETTINGS 
+     */
   "gitlens.codeLens.recentChange.enabled": true,
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.enabled": false,
   /* 
-   * EMMET SETTINGS 
-   */
+     * EMMET SETTINGS 
+     */
   "emmet.syntaxProfiles": {
     "javascript": "jsx",
     "nunjucks": "html"
@@ -110,8 +109,8 @@
     "nunjucks": "html"
   },
   /* 
-   * ESLINT SETTINGS 
-   */
+     * ESLINT SETTINGS 
+     */
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -119,8 +118,8 @@
     "typescriptreact"
   ],
   /* 
-   * FILES AND MATERIAL ICON SETTINGS 
-   */
+     * FILES AND MATERIAL ICON SETTINGS 
+     */
   "files.associations": {
     ".sequelizerc": "javascript",
     ".stylelintrc": "json",
@@ -154,14 +153,15 @@
     "main": "Public",
     "unit": "Guard",
     "nodejs": "node",
+    "node_modules": "Container",
   },
   "material-icon-theme.files.associations": {
     "ormconfig.json": "database",
     "tsconfig.json": "tune",
     "tsconfig.build.json": "tune",
     "*.proto": "3d",
-    "package.json": "npm",
-    "package-lock.json": "npm",
+    "package.json": "nodejs",
+    "package-lock.json": "nodejs",
     "*.md": "Markdown",
     "jest.config.unit.js": "jest",
     "jest.config.unit.ts": "jest",
@@ -176,9 +176,19 @@
     "jest.config.coverage.js": "jest",
     "jest.config.coverage.ts": "jest",
     "README.md": "Markdown",
+    ".node-version": "nodejs_alt",
+    ".npmrc": "nodejs_alt",
+    "node_modules": "package",
+    "vitest.config.unit.mts": "vitest",
+    "vitest.config.integration.mts": "vitest",
+    "vitest.config.e2e.mts": "vitest",
+    "USING_THIS_TEMPLATE.md": "Gulp",
+    "PULL_REQUEST_TEMPLATE.md": "Diff"
   },
   /* 
-   * CONSOLE NINJA SETTINGS 
-   */
+     * CONSOLE NINJA SETTINGS 
+     */
   "console-ninja.featureSet": "Community",
+  "prisma.showPrismaDataPlatformNotification": false,
+  "github.copilot.editor.enableAutoCompletions": true
 }
