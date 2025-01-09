@@ -45,4 +45,29 @@
     "key": "alt+shift+p",
     "command": "workbench.action.showCommands"
   },
+  {
+    "key": "alt+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "alt+c",
+    "command": "editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "alt+x",
+    "command": "editor.action.clipboardCutAction"
+  },
+  {
+    "key": "alt+v",
+    "command": "editor.action.clipboardPasteAction"
+  },
+  {
+    "key": "alt+s",
+    "command": "chatEditing.saveAllFiles",
+    "when": "hasUndecidedChatEditingResource && inChatInput && !chatSessionRequestInProgress && chatLocation == 'editing-session'"
+  },
+  {
+    "key": "alt+s",
+    "command": "workbench.action.files.save"
+  },
 ]
