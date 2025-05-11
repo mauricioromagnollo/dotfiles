@@ -28,3 +28,28 @@
 Proporção de tela: 4:3
 Resolução: 1280x960
 Taxa de atualização: 144Hz
+
+## Resolução
+
+4:3
+1280x960
+
+viewmodel_offset_x 2.5
+viewmodel_offset_y 0
+viewmodel_offset_z -1.5
+
+## Configuração da Steam
+
+Abra o aplicativo da steam e clique no canto superior esquerdo em **Steam** > **Configurações**.
+
+- Em **Interface**, desabilite TUDO (Precisa reiniciar o PC para aplicar as alterações).
+- Em **Gravação de jogo** selecione a opção "Gravação desativada"
+- Em **Remote Play** clique para desativar
+- Em **Transmissão** coloque a opção em **Configuração de privacidade** como "Transmissão desativada"
+- Em **Música** desabilite o volume e todas as opções
+
+Agora, é só reiniciar o PC!
+
+## Configuração do Discord
+
+...
