@@ -11,6 +11,8 @@
 <!-- markdownlint-disable MD025 -->
 #
 
+Mira -> CSGO-6ArVS-etDJB-ksNHD-sLb7j-4NJvM
+
 ## Como Instalar?
 
 1. Faça o download do repositório clicando no botão verde "Code" e depois em "Download ZIP".
