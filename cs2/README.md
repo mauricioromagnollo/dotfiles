@@ -1,57 +1,105 @@
-<!-- markdownlint-disable MD041 -->
-[COVER](./cover.png)
+# **cs2**
 
-#
+> My personal Counter-Strike 2 configuration files.
 
-- [Como Instalar?](#como-instalar)
-- [Configurações do Windows](#configurações-do-windows)
-- [Configurações de Vídeo](#configurações-de-vídeo)
+---
 
-<!-- markdownlint-disable MD024 -->
-<!-- markdownlint-disable MD025 -->
-#
+- [:heavy_plus_sign: **Crosshair**](#crosshair)
+- [🖱️ **Mouse**](#mouse)
+- [🖥️ **Display and Monitor**](#display-and-monitor)
+- [🎥 **Video Settings**](#video-settings)
+- [🧩 **Mouse and Keyboard Binds**](#mouse-and-keyboard-binds)
+- [🕹️ **Steam Settings**](#steam-settings)
+- [🎙️ **Discord Settings**](#discord-settings)
+- [:computer: **My Setup**](#my-setup)
 
-Mira -> CSGO-6ArVS-etDJB-ksNHD-sLb7j-4NJvM
+---
 
-## Como Instalar?
+<br>
 
-1. Faça o download do repositório clicando no botão verde "Code" e depois em "Download ZIP".
-2. Extraia o arquivo .zip em uma pasta de sua preferência.
-3. Abra a pasta e clique 2x no arquivo `install.bat`.
-4. Aguarde a instalação ser concluída e estará finalizada a instalação.
+## **Crosshair**
 
-## Configurações do Windows
+```text
+CSGO-6ArVS-etDJB-ksNHD-sLb7j-4NJvM
+```
 
-- Configurações > Mouse > Velocidade do cursor > 6
-- Opções adicionais de mouse > Desativar a opção "Aprimorar precisão do mouse"
+<br>
 
-## Configurações de Vídeo
+## **Mouse**
 
-Proporção de tela: 4:3
-Resolução: 1280x960
-Taxa de atualização: 144Hz
+| Config                       | Value |
+| ----------------------------- | ----------------- |
+| **DPI**              | `1600`               |
+| **Sensibility**                           | `0.5`     |
+| **Windows Cursor Speed**                       | `6`           |
+| **Enhance pointer precision**                   | `Disabled/Unchecked`           |
 
-## Resolução
+<br>
 
-4:3
-1280x960
+## **Display and Monitor**
 
+| Config                       | Value |
+| ----------------------------- | ----------------- |
+| **Refresh Rate**              | `360Hz`               |
+| **Resolution**                | `1920x1080`           |
+| **Aspect Ratio**              | `16:9`                |
+| **Scaling Mode**              | `Stretched`           |
+| **Display Mode**              | `Fullscreen`          |
+
+**View Model**
+
+```text
 viewmodel_offset_x 2.5
 viewmodel_offset_y 0
 viewmodel_offset_z -1.5
+```
 
-## Configuração da Steam
+<br>
 
-Abra o aplicativo da steam e clique no canto superior esquerdo em **Steam** > **Configurações**.
-
-- Em **Interface**, desabilite TUDO (Precisa reiniciar o PC para aplicar as alterações).
-- Em **Gravação de jogo** selecione a opção "Gravação desativada"
-- Em **Remote Play** clique para desativar
-- Em **Transmissão** coloque a opção em **Configuração de privacidade** como "Transmissão desativada"
-- Em **Música** desabilite o volume e todas as opções
-
-Agora, é só reiniciar o PC!
-
-## Configuração do Discord
+## **Video Settings**
 
 ...
+
+<br>
+
+## **Mouse and Keyboard Binds**
+
+...
+
+<br>
+
+## **Steam Settings**
+
+Open the Steam application and click on Steam > Settings in the top-left corner.
+
+- Under Interface, disable ALL options (You need to restart your PC for the changes to take effect).
+- Under In-Game, set Screenshot shortcut keys to "None" and disable all overlay features.
+- Under Broadcasting, set the Privacy setting to "Broadcasting Disabled".
+- Under Remote Play, uncheck "Enable Remote Play".
+- Under Music, turn off the volume and disable all related options.
+
+Now, just reboot!
+
+<br>
+
+## **Discord Settings**
+
+...
+
+<br>
+
+## **My Setup**
+
+| Component                       | Model |
+| ----------------------------- | ----------------- |
+| **Operation System**              | `Windows 10`               |
+| **CPU**                           | `Intel Core i9-10900K`     |
+| **GPU**                           | `NVIDIA GeForce RTX 3080`   |
+| **RAM**                           | `32GB DDR4`                 |
+| **Storage**                       | `1TB NVMe SSD`              |
+| **Monitor**                       | `Alienware AW2521H`         |
+| **Mouse**                         | `Logitech G703 LightSpeed Wireless` |
+| **Keyboard**                     | `Redragon Kumara Switch Blue` |
+| **Headset**                       | `HyperX Cloud II`           |
+| **Headphones**                   | `HyperX Cloud II`           |
+| **Microphone**                   | `HyperX QuadCast S`         |
