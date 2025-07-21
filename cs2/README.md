@@ -92,11 +92,11 @@ Now, just reboot!
 
 | Component                       | Model |
 | ----------------------------- | ----------------- |
-| **Operation System**              | `Windows 10`               |
-| **CPU**                           | `Intel Core i9-10900K`     |
-| **GPU**                           | `NVIDIA GeForce RTX 3080`   |
-| **RAM**                           | `32GB DDR4`                 |
-| **Storage**                       | `1TB NVMe SSD`              |
+| **Operation System**              | `Windows 10 Pro`               |
+| **CPU**                           | `AMD Ryzen 7 5700X 8-Core 3.40 GHz`     |
+| **GPU**                           | `NVIDIA GeForce RTX 3060 (12 GB)`   |
+| **RAM**                           | `16GB DDR4 3600MHz`                 |
+| **Storage**                       | `1TB NVMe SSD KINGSTON`              |
 | **Monitor**                       | `Alienware AW2521H`         |
 | **Mouse**                         | `Logitech G703 LightSpeed Wireless` |
 | **Keyboard**                     | `Redragon Kumara Switch Blue` |
