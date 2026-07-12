@@ -52,4 +52,5 @@
   tg = !git tag
   co = !git checkout
   com = !git checkout master
+  cmain = !git checkout main
   cob = !git checkout -b
