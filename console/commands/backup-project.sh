@@ -30,6 +30,10 @@ set -euo pipefail
 BACKUP_ITEMS=(
   "tmp/"
   ".env"
+  ".env.local"
+  ".specs"
+  ".claude"
+  ".vercel"
 )
 
 # Staging dir kept at script scope so the EXIT trap can always see it.
