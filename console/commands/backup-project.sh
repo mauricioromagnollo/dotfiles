@@ -4,15 +4,11 @@
 # chmod +x backup-project.sh
 
 # =================================================================
-# This script backs up a project based on a list of files and
-# directories declared inside the project itself.
+# This script backs up a project based on a fixed list of files and
+# directories declared in the BACKUP_ITEMS array below.
 #
-# - It reads a list file (default: .backup-project.list) placed in
-#   the project root. Each non-empty, non-comment line is a path
-#   (file or directory) relative to the project root, e.g.:
-#       tmp/
-#       .env
-#       config/secrets.yml
+# - Each entry is a path (file or directory) relative to the project
+#   root, e.g.: tmp/, .env, config/secrets.yml
 # - The listed items are copied - preserving their relative
 #   structure - into a staging folder named after the project.
 # - That folder is compressed into <project-name>.zip and moved to
@@ -21,13 +17,20 @@
 #   removed on exit (success or failure), so no trace is left inside
 #   the project or the current directory.
 #
+# The array lives inside the script so it can be installed to
+# /usr/bin (or another PATH dir) and used as a global command.
+#
 # $ backup-project <source-dir> <destination-dir>
 # $ backup-project . ~/backups
 # =================================================================
 
 set -euo pipefail
 
-LIST_FILE_NAME=".backup-project.list"
+# Files and directories to back up (relative to the project root).
+BACKUP_ITEMS=(
+  "tmp/"
+  ".env"
+)
 
 # Staging dir kept at script scope so the EXIT trap can always see it.
 stageDir=""
@@ -55,8 +58,8 @@ function print-usage() {
   print-msg -white "  <source-dir>       Project directory (use . for the current one)"
   print-msg -white "  <destination-dir>  Where the resulting .zip will be placed"
   print-msg -white ""
-  print-msg -white "The project must contain a '$LIST_FILE_NAME' file listing the"
-  print-msg -white "files/directories to back up (one relative path per line)."
+  print-msg -white "Edit the BACKUP_ITEMS array in this script to choose what"
+  print-msg -white "gets backed up (paths relative to the project root)."
 }
 
 function backup-project() {
@@ -75,18 +78,16 @@ function backup-project() {
     return 1
   fi
 
+  if [[ "${#BACKUP_ITEMS[@]}" -eq 0 ]]; then
+    print-msg -red "[!] BACKUP_ITEMS is empty. Add paths to back up."
+    return 1
+  fi
+
   # Resolve absolute paths so we can safely cd around.
   local sourceDir
   sourceDir="$(cd "$sourceArg" && pwd)"
   local projectName
   projectName="$(basename -- "$sourceDir")"
-
-  local listFile="$sourceDir/$LIST_FILE_NAME"
-  if [[ ! -f "$listFile" ]]; then
-    print-msg -red "[!] List file not found: $listFile"
-    print-msg -white "    Create it with one relative path per line (tmp/, .env, ...)."
-    return 1
-  fi
 
   # Create the destination if it does not exist yet.
   mkdir -p "$destArg"
@@ -102,12 +103,11 @@ function backup-project() {
   # --- Copy each listed item, preserving relative structure -------
   local copiedCount=0
   local item
-  while IFS= read -r item || [[ -n "$item" ]]; do
-    # Skip blank lines and comments.
+  for item in "${BACKUP_ITEMS[@]}"; do
     item="${item#"${item%%[![:space:]]*}"}"   # trim leading whitespace
     item="${item%"${item##*[![:space:]]}"}"    # trim trailing whitespace
     item="${item%/}"                            # drop trailing slash
-    [[ -z "$item" || "$item" == \#* ]] && continue
+    [[ -z "$item" ]] && continue
 
     # Reject anything that could escape the staging folder.
     if [[ "$item" == /* || "$item" == *..* ]]; then
@@ -128,10 +128,10 @@ function backup-project() {
     cp -R "$sourceItem" "$projectStage/$parentDir/"
     print-msg -green "[+] Added: $item"
     copiedCount=$((copiedCount + 1))
-  done < "$listFile"
+  done
 
   if [[ "$copiedCount" -eq 0 ]]; then
-    print-msg -red "[!] Nothing to back up. Check your $LIST_FILE_NAME."
+    print-msg -red "[!] Nothing to back up. Check the BACKUP_ITEMS array."
     return 1
   fi
 
