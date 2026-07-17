@@ -2,9 +2,9 @@
 
 # 🛠️ dotfiles
 
-### *My machine, my rules.*
+### *My machine configs.*
 
-A cozy home for the configs, scripts, aliases and Claude Code skills that turn a fresh laptop into **my** laptop. ✨
+A cozy home for the configs, scripts and aliases that turn a fresh laptop into **my** laptop. ✨
 
 <br />
 
@@ -14,9 +14,6 @@ A cozy home for the configs, scripts, aliases and Claude Code skills that turn a
 ![Claude](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
 
 <br />
-
-*"Dotfiles are like a toothbrush — everyone should have their own, and you should never use someone else's."* 🪥
-*(…but you're very welcome to steal ideas.)*
 
 </div>
 
@@ -41,7 +38,6 @@ A cozy home for the configs, scripts, aliases and Claude Code skills that turn a
 ## 🚀 Quick start
 
 ```bash
-# clone it wherever you like
 git clone https://github.com/mauricioromagnollo/dotfiles.git
 cd dotfiles
 ```
