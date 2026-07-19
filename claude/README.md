@@ -19,6 +19,7 @@ Each skill is a focused knowledge pack that Claude loads automatically when the 
 | **bash** | `/bash` | Robust Shell scripting — quoting & expansions, `set -euo pipefail` + traps, arrays, subshells, file descriptors, signals, `getopts`, and the Unix toolbelt (grep/sed/awk/find/xargs/jq). |
 | **ui-ux** | `/ui-ux` | Interface & experience design — Norman, Krug, Gestalt, Nielsen's heuristics, Laws of UX, accessibility (WCAG) and modern UI patterns. |
 | **conventional-commits** | `/conventional-commits` | Commit messages that follow Conventional Commits & commitlint (`@commitlint/config-conventional`), always in English. |
+| **notion** | `/notion` | Notion end-to-end — every block type, page & dashboard design, database modeling, views/filters, formulas, buttons & automations, workspace architecture, the API/MCP, plus a curated index of the official docs. |
 | **english-teacher** | `/english-teacher` | English for Brazilian learners — L1 interference & false friends, pronunciation, tenses & aspect, collocations, fluency & listening, corporate/tech English, error correction, study plans and exams (IELTS, TOEFL, Cambridge). |
 
 Every skill defaults to being **conservative**: it explains the trade-offs and tells Claude when the right move is to do *nothing*.
