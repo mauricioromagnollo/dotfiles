@@ -1,0 +1,89 @@
+{
+  "skill_name": "security",
+  "notes": "Os fixtures são repositórios propositalmente vulneráveis, criados só para avaliar revisores automáticos. O gabarito de cada um fica FORA do diretório do fixture, para não ser lido pelo agente sob teste.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "auditoria-api-financeira",
+      "prompt": "Herdei essa API de um dev que saiu da empresa e ela vai pra produção na semana que vem — é uma fintech, então tem dinheiro e dado de cliente no meio. Dá uma olhada com calma se tem alguma coisa que vai me queimar. O código tá em ./api-financeira",
+      "expected_output": "Lista de achados ordenada por severidade, com arquivo:linha, caminho de exploração e correção. Deve pegar as 3 críticas (IDOR sem escopo de tenant, SQL injection via $queryRawUnsafe, mass assignment para role ADMIN), pelo menos 1 das 2 de lógica de negócio (race condition no saldo), e pelo menos 1 das que exigem cruzar arquivos. Não deve reportar as 3 armadilhas de falso positivo como vulnerabilidade.",
+      "files": [
+        "fixtures/api-financeira/"
+      ],
+      "assertions": [
+        "Detecta o IDOR em accounts.routes.ts: identifica que o accountId vem da URL e não é confrontado com o dono/tenant do token",
+        "Detecta a SQL injection em accounts.service.ts via $queryRawUnsafe com interpolação do parâmetro de busca",
+        "Detecta que a rota de export de extrato não tem o hook de autenticação (exige cruzar com plugins/auth.ts)",
+        "Detecta o mass assignment em users.routes.ts que permite o próprio usuário escalar para role ADMIN",
+        "Detecta que o schema Zod de transferência está declarado em transfers.schemas.ts mas não é aplicado na rota",
+        "Detecta a race condition TOCTOU de saldo em transfers.service.ts (ler, checar e debitar sem transação nem lock)",
+        "Detecta o webhook de pagamento sem verificação de assinatura",
+        "Detecta o CORS refletindo a Origin da requisição com credentials: true",
+        "Detecta o segredo de JWT com valor de fallback embutido no código",
+        "Detecta rejectUnauthorized: false na integração do gateway",
+        "NÃO reporta como injeção o $queryRaw com tagged template (é seguro no Prisma)",
+        "NÃO reporta como vulnerabilidade o Math.random() usado para jitter de retry",
+        "NÃO reporta como IDOR a rota pública de comprovante, que é pública por design",
+        "Cada achado traz localização precisa no formato arquivo:linha",
+        "Os achados são classificados por severidade e a ordem de apresentação reflete isso"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "design-impersonation",
+      "prompt": "o time de suporte tá pedindo um 'entrar como cliente' pra conseguir debugar os chamados sem ficar pedindo print. eu ia fazer o mais simples: um endpoint /admin/impersonate/:userId que devolve um JWT normal do cliente, protegido por role de admin. me fala se isso tem furo antes de eu implementar",
+      "expected_output": "Resposta de design, não checklist genérico. Deve identificar os problemas reais dessa arquitetura: o token indistinguível de uma sessão legítima (auditoria não consegue separar ação do suporte da ação do cliente), ausência de trilha de auditoria, ausência de consentimento/notificação, escopo do token não reduzido (suporte fazendo transferência), ausência de expiração curta e de revogação, e o risco do próprio endpoint (IDOR se o role não for checado direito, escalada para impersonar outro admin). Deve propor a alternativa concreta: claim de ator no token, escopo reduzido, TTL curto, log imutável, aprovação/notificação.",
+      "files": [],
+      "assertions": [
+        "Aponta que um JWT idêntico ao do cliente destrói a auditoria — depois do fato é impossível saber se a ação foi do cliente ou do suporte",
+        "Recomenda registrar o operador dentro do próprio token (claim de ator/impersonador) em vez de emitir um token indistinguível",
+        "Exige trilha de auditoria do evento de impersonação e das ações praticadas durante ela",
+        "Recomenda reduzir o escopo do token de impersonação, bloqueando operações sensíveis (transferência, troca de senha/e-mail, exclusão de conta)",
+        "Recomenda TTL curto e caminho de revogação explícito para a sessão de impersonação",
+        "Menciona consentimento, notificação ao cliente ou requisito legal/LGPD de acesso a dado pessoal por terceiro",
+        "Analisa a segurança do próprio endpoint (checagem de papel no servidor, impossibilidade de impersonar outro admin, rate limit)",
+        "Vai além de 'proteja com role de admin' — não trata a checagem de papel como solução suficiente"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "revisao-app-mobile",
+      "prompt": "review de segurança nesse app React Native de banco, por favor. principalmente a parte de guardar o token e o login por biometria, que foi eu que fiz e não tenho certeza se tá certo. ./app-mobile",
+      "expected_output": "Deve identificar token/PIN em AsyncStorage sem cifra (com a correção correta: Keychain/Keystore), a chave de API embarcada no bundle (e explicar que tudo no binário é público), a biometria decidida por booleano local (e explicar por que o certo é vincular a chave do Keychain à biometria, não confiar no retorno de evaluatePolicy), o deep link e a WebView sem validação, e a configuração insegura no AndroidManifest. Deve dizer explicitamente que controle no cliente é bypassável e que a validação precisa existir no servidor. Não deve reportar as 2 armadilhas de falso positivo.",
+      "files": [
+        "fixtures/app-mobile/"
+      ],
+      "assertions": [
+        "Detecta token de acesso, refresh token, PIN e CPF gravados em AsyncStorage sem cifra",
+        "Detecta a chave de serviço embarcada no bundle e explica que tudo que vai no binário é público",
+        "Detecta o deep link que executa transferência com parâmetro não validado",
+        "Detecta a WebView que carrega URL vinda de deep link com JavaScript habilitado",
+        "Detecta o log de token, PIN e CPF que permanece ativo em release",
+        "Detecta que o limite diário é validado só no cliente e exige a checagem equivalente no servidor",
+        "Detecta que a biometria é decidida por um booleano no processo do app e explica a correção: vincular a chave do Keychain/Keystore à autenticação biométrica",
+        "Detecta as configurações inseguras do AndroidManifest (backup habilitado, tráfego em claro, componente exportado sem permissão)",
+        "NÃO reporta como vulnerabilidade o uso de AsyncStorage para preferência de tema",
+        "NÃO reporta como vulnerabilidade a WebView da central de ajuda, cuja URL é constante do bundle",
+        "Afirma explicitamente que controle no cliente é contornável e que a API é a fronteira de segurança real",
+        "Cada achado traz localização precisa no formato arquivo:linha"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "triagem-npm-audit",
+      "prompt": "npm audit tá acusando 23 vulnerabilidades sendo 6 high e 2 critical, e agora o pipeline tá vermelho e ninguém consegue fazer deploy. metade parece ser de coisa que só roda em build. o pessoal quer só colocar --audit-level=none e seguir a vida. me ajuda a decidir",
+      "expected_output": "Resposta de triagem com julgamento, não 'atualize tudo' nem 'ignore'. Deve introduzir os critérios que decidem: alcançabilidade do código vulnerável, se a dependência é de produção ou de build/dev (e por que dependência de build ainda importa — é a superfície de supply chain), EPSS/KEV acima de CVSS puro, e o fato de npm audit reportar por árvore e não por caminho explorável. Deve dar comandos concretos (npm audit --omit=dev, npm ls <pacote>, osv-scanner) e recomendar uma política de bloqueio que seja acionável em vez de desligar tudo.",
+      "files": [],
+      "assertions": [
+        "Introduz alcançabilidade (o código vulnerável é de fato chamado?) como critério de decisão, não só a severidade reportada",
+        "Distingue dependência de produção de dependência de build/dev, sem descartar a de build — reconhece que ela é superfície de cadeia de suprimentos",
+        "Cita EPSS, CISA KEV ou existência de exploit público como critério acima do CVSS isolado",
+        "Explica que o npm audit reporta por árvore de dependência e não por caminho explorável, o que produz alarme inacionável",
+        "Dá pelo menos dois comandos concretos e corretos (por exemplo npm audit --omit=dev, npm ls <pacote>, osv-scanner, npm audit fix --dry-run)",
+        "Rejeita --audit-level=none como solução, explicando que desligar o sinal é pior que calibrá-lo",
+        "Propõe uma política de bloqueio de CI acionável (o que bloqueia, o que só avisa, e o critério da distinção)",
+        "Não recomenda simplesmente 'atualize todas as dependências' como resposta única"
+      ]
+    }
+  ]
+}
