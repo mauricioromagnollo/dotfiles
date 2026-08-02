@@ -32,7 +32,7 @@ ok()    { printf '%s\n' "${GREEN}  ✔${RESET} $*"; }
 warn()  { printf '%s\n' "${YELLOW}  !${RESET} $*"; }
 
 usage() {
-  sed -n '2,12p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+  sed -n '2,11p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
 }
 
 # --- parse arguments ---------------------------------------------------------
@@ -57,6 +57,12 @@ for dir in "$SKILLS_SRC"/*/; do
   [[ -f "${dir}SKILL.md" ]] || continue
   AVAILABLE+=("$(basename "$dir")")
 done
+
+# bash 3.2 aborts on "${ARR[@]}" of an empty array under set -u, so bail out early.
+if [[ "${#AVAILABLE[@]}" -eq 0 ]]; then
+  warn "no skills found in ${SKILLS_SRC} (a skill is a directory containing a SKILL.md)"
+  exit 1
+fi
 
 if [[ "$LIST" -eq 1 ]]; then
   info "Skills available in this repo:"
@@ -99,6 +105,8 @@ for name in "${TO_INSTALL[@]}"; do
   fi
 
   cp -R "$src" "$dest"
+  # skills may ship helper scripts; make sure they land executable.
+  find "$dest" -type f -name '*.sh' -exec chmod +x {} +
   ok "${name}"
 done
 
