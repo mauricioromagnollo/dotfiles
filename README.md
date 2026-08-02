@@ -27,7 +27,7 @@ A cozy home for the configs, scripts and aliases that turn a fresh laptop into *
 
 | Folder | What lives here |
 | :--- | :--- |
-| 🧠 **[`claude/`](./claude)** | My **Claude Code skills** (`craft`, `nodejs`, `golang`, `dba`, `sre`, `bash`, `ui-ux`, `conventional-commits`) plus a one-command installer. |
+| 🧠 **[`claude/`](./claude)** | My **Claude Code skills** — 12 specialists (code craft, backend, databases, infra, security & more) plus a one-command installer. Full list in **[`claude/README.md`](./claude/README.md)**. |
 | 💻 **[`console/`](./console)** | Handy terminal commands & scripts — project backups, cleanup helpers, `node_modules` nukers, audio splitters and more. |
 | 🎮 **[`cs2/`](./cs2)** | Counter-Strike 2 configs — `autoexec.cfg` and practice setup. |
 | 🌱 **[`git/`](./git)** | My global `.gitconfig` and Git tweaks. |

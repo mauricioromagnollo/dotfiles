@@ -3,7 +3,7 @@
 A curated set of [Claude Code](https://docs.anthropic.com/en/docs/claude-code) **Agent Skills** I use every day.
 Each skill is a focused knowledge pack that Claude loads automatically when the task matches — so the model reasons like a specialist (a DBA, an SRE, a backend engineer…) instead of a generalist.
 
-> A **skill** is a folder with a `SKILL.md` (the entry point + trigger description) and optional `references/` files that Claude opens on demand. Nothing runs in the background — a skill only activates when its description matches what you're doing.
+> A **skill** is a folder with a `SKILL.md` (the entry point + trigger description), plus optional `references/` files Claude opens on demand, `scripts/` it can run, and `evals/` that keep its triggering honest. Nothing runs in the background — a skill only activates when its description matches what you're doing.
 
 ---
 
@@ -16,6 +16,7 @@ Each skill is a focused knowledge pack that Claude loads automatically when the 
 | **golang** | `/golang` | Idiomatic Go — package & API design, error handling, concurrency (goroutines, channels, `context`, `sync`), testing, modules and performance. |
 | **dba** | `/dba` | Databases end-to-end — ER modeling, normalization, SQL, indexes, execution plans, transactions & concurrency, zero-downtime migrations and operational PostgreSQL. |
 | **sre** | `/sre` | Reliability & DevOps — CI/CD (GitHub Actions & Azure Pipelines), Terraform/OpenTofu, Docker, Kubernetes and AWS. |
+| **security** | `/security` | Application security for web & mobile — injection, XSS/CSP/CSRF/CORS, broken access control & IDOR, business-logic flaws & race conditions, auth/session/JWT/OAuth, SSRF & the HTTP layer, crypto & secrets, API/GraphQL, mobile, supply chain & CI/CD, and LLM apps — **with a strong emphasis on not reporting false positives**. |
 | **bash** | `/bash` | Robust Shell scripting — quoting & expansions, `set -euo pipefail` + traps, arrays, subshells, file descriptors, signals, `getopts`, and the Unix toolbelt (grep/sed/awk/find/xargs/jq). |
 | **ui-ux** | `/ui-ux` | Interface & experience design — Norman, Krug, Gestalt, Nielsen's heuristics, Laws of UX, accessibility (WCAG) and modern UI patterns. |
 | **conventional-commits** | `/conventional-commits` | Commit messages that follow Conventional Commits & commitlint (`@commitlint/config-conventional`), always in English. |
@@ -72,16 +73,20 @@ cp -R skills/craft ~/.claude/skills/
 ## 🛠️ Anatomy of a skill
 
 ```
-skills/craft/
+skills/security/
 ├── SKILL.md            # entry point: frontmatter (name + description) and the core guidance
-└── references/         # deep-dive files Claude opens only when needed
-    ├── solid.md
-    ├── clean-code.md
-    ├── ddd.md
-    └── ...
+├── references/         # deep-dive files Claude opens only when needed
+│   ├── owasp-top10.md
+│   ├── injecao.md
+│   ├── autorizacao-e-logica-de-negocio.md
+│   └── ...
+├── scripts/            # executable helpers Claude can run
+│   └── triagem.sh
+└── evals/              # test cases that check the skill fires when it should
+    └── evals.json
 ```
 
-The `description` in the frontmatter is what tells Claude *when* to load the skill — it's written to match natural requests ("refactor this", "why is this query slow?", "make a script for this"), not just keywords.
+The `description` in the frontmatter is what tells Claude *when* to load the skill — it's written to match natural requests ("refactor this", "why is this query slow?", "make a script for this"), not just keywords. `scripts/` holds utilities Claude runs instead of retyping — they need the executable bit (`chmod +x`). `evals/` holds triggering test cases the **skill-creator** skill runs to measure whether the description fires on the right prompts and stays quiet on the wrong ones. Only `SKILL.md` is required; most skills here stop at `references/`.
 
 ---
 
